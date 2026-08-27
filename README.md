@@ -45,7 +45,7 @@ This section covers failures in authorization enforcement, including horizontal 
 | Lab | Main focus |
 |---|---|
 | [Unprotected admin functionality](lab-writeups/Broken_Access_Control/unprotected-admin-functionality.md) | Missing server-side authorization |
-| [Unprotected admin functionality with an unpredictable URL](lab-writeups/Broken_Access_Control/unprotected-admin-functionality-with-unpredicted-url.md) | Hidden endpoint discovery and missing authorization |
+| [Unprotected admin functionality with an unpredictable URL](lab-writeups/Broken_Access_Control/unprotected-admin-functionality-with-unpredictable-url.md) | Hidden endpoint discovery and missing authorization |
 | [User role controlled by request parameter](lab-writeups/Broken_Access_Control/user-role-controlled-by-request-parameter.md) | Client-controlled authorization state |
 | [User role can be modified in user profile](lab-writeups/Broken_Access_Control/user-role-can-be-modified-in-user-profile.md) | Mass assignment / privilege escalation |
 | [User ID controlled by request parameter](lab-writeups/Broken_Access_Control/user-id-controlled-by-request-parameter.md) | Horizontal privilege escalation / IDOR |
