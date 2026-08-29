@@ -2,15 +2,15 @@
 
 Hands-on web application security portfolio documenting practical vulnerability testing in controlled training environments.
 
-The repository currently contains **20 completed technical write-ups** based primarily on PortSwigger Web Security Academy labs. Each write-up focuses not only on the exploit, but also on the reasoning behind the vulnerability, its root cause, impact, and remediation.
+The repository currently contains **21 completed technical write-ups** based primarily on PortSwigger Web Security Academy labs. Each write-up focuses not only on the exploit, but also on the reasoning behind the vulnerability, its root cause, impact, and remediation.
 
 ## Current Progress
 
 | Topic | Completed write-ups | Status |
 |---|---:|---|
 | Broken Access Control | 13 | Completed |
-| Authentication Vulnerabilities | 7 | In progress |
-| **Total** | **20** | |
+| Authentication Vulnerabilities | 8 | In progress |
+| **Total** | **21** | |
 
 ## Methodology
 
@@ -85,6 +85,7 @@ This section covers weaknesses in login mechanisms, username enumeration, brute-
 | [Username enumeration via account lock](lab-writeups/Authentication_Vulnerabilities/username-enumeration-via-account-lock.md) | Account lockout behavior as an enumeration oracle |
 | [Broken brute-force protection, multiple credentials per request](lab-writeups/Authentication_Vulnerabilities/broken-brute-force-protection-multiple-credentials-per-request.md) | JSON type manipulation and request-based rate-limit bypass |
 | [2FA simple bypass](lab-writeups/Authentication_Vulnerabilities/2fa-simple-bypass.md) | Missing MFA-state enforcement on protected resources |
+| [2FA broken logic](lab-writeups/Authentication_Vulnerabilities/2fa-broken-logic.md) | Client-controlled MFA identity and brute-forceable second factor |
 
 ### Concepts practiced
 
@@ -98,6 +99,8 @@ This section covers weaknesses in login mechanisms, username enumeration, brute-
 - `X-Forwarded-For` manipulation
 - JSON input type manipulation
 - Multi-factor authentication state
+- MFA identity binding
+- Client-controlled authentication state
 
 ---
 
@@ -110,6 +113,7 @@ Techniques demonstrated across the write-ups include:
 - Proxy and HTTP history analysis
 - Repeater-based request manipulation
 - Intruder payload attacks
+- Turbo Intruder for high-volume request testing
 - Sniper and Pitchfork attack strategies
 - Grep - Match and Grep - Extract
 - Response length and timing analysis
@@ -131,7 +135,7 @@ web-security-portfolio/
     ├── Broken_Access_Control/
     │   └── 13 technical write-ups
     └── Authentication_Vulnerabilities/
-        └── 7 technical write-ups
+        └── 8 technical write-ups
 ```
 
 New vulnerability classes will be added as the training progresses.
