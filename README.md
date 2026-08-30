@@ -2,15 +2,15 @@
 
 Hands-on web application security portfolio documenting practical vulnerability testing in controlled training environments.
 
-The repository currently contains **21 completed technical write-ups** based primarily on PortSwigger Web Security Academy labs. Each write-up focuses not only on the exploit, but also on the reasoning behind the vulnerability, its root cause, impact, and remediation.
+The repository currently contains **21 completed technical write-ups**, plus **1 additional MFA brute-force workflow that was fully validated but not brute-forced to completion**, based primarily on PortSwigger Web Security Academy labs. Each write-up focuses not only on the exploit, but also on the reasoning behind the vulnerability, its root cause, impact, and remediation.
 
 ## Current Progress
 
-| Topic | Completed write-ups | Status |
+| Topic | Progress | Status |
 |---|---:|---|
 | Broken Access Control | 13 | Completed |
-| Authentication Vulnerabilities | 8 | In progress |
-| **Total** | **21** | |
+| Authentication Vulnerabilities | 8 completed + 1 workflow-validated | In progress |
+| **Total** | **21 completed + 1 workflow-validated** | |
 
 ## Methodology
 
@@ -86,6 +86,9 @@ This section covers weaknesses in login mechanisms, username enumeration, brute-
 | [Broken brute-force protection, multiple credentials per request](lab-writeups/Authentication_Vulnerabilities/broken-brute-force-protection-multiple-credentials-per-request.md) | JSON type manipulation and request-based rate-limit bypass |
 | [2FA simple bypass](lab-writeups/Authentication_Vulnerabilities/2fa-simple-bypass.md) | Missing MFA-state enforcement on protected resources |
 | [2FA broken logic](lab-writeups/Authentication_Vulnerabilities/2fa-broken-logic.md) | Client-controlled MFA identity and brute-forceable second factor |
+| [2FA bypass using a brute-force attack](lab-writeups/Authentication_Vulnerabilities/2fa-bypass-using-a-brute-force-attack.md) | Per-session MFA attempt limit bypass using re-authentication and Burp macros |
+
+> **Execution note:** The final lab above has a fully reproduced session-reset bypass and validated automation workflow. The full `0000-9999` enumeration was not completed in the available test setup because the macro-driven request chain was too slow, so no successful MFA code is claimed.
 
 ### Concepts practiced
 
@@ -101,6 +104,10 @@ This section covers weaknesses in login mechanisms, username enumeration, brute-
 - Multi-factor authentication state
 - MFA identity binding
 - Client-controlled authentication state
+- Burp macros
+- Session Handling Rules
+- CSRF token refresh
+- Workflow-level rate-limit bypass
 
 ---
 
@@ -114,6 +121,8 @@ Techniques demonstrated across the write-ups include:
 - Repeater-based request manipulation
 - Intruder payload attacks
 - Turbo Intruder for high-volume request testing
+- Burp macros and Session Handling Rules
+- Automated session and CSRF token refresh
 - Sniper and Pitchfork attack strategies
 - Grep - Match and Grep - Extract
 - Response length and timing analysis
@@ -135,7 +144,7 @@ web-security-portfolio/
     ├── Broken_Access_Control/
     │   └── 13 technical write-ups
     └── Authentication_Vulnerabilities/
-        └── 8 technical write-ups
+        └── 9 technical write-ups
 ```
 
 New vulnerability classes will be added as the training progresses.
