@@ -2,15 +2,15 @@
 
 Hands-on web application security portfolio documenting practical vulnerability testing in controlled training environments.
 
-The repository currently contains **21 completed technical write-ups**, plus **1 additional MFA brute-force workflow that was fully validated but not brute-forced to completion**, based primarily on PortSwigger Web Security Academy labs. Each write-up focuses not only on the exploit, but also on the reasoning behind the vulnerability, its root cause, impact, and remediation.
+The repository currently contains **22 completed technical write-ups**, plus **1 additional MFA brute-force workflow that was fully validated but not brute-forced to completion**, based primarily on PortSwigger Web Security Academy labs. Each write-up focuses not only on the exploit, but also on the reasoning behind the vulnerability, its root cause, impact, and remediation.
 
 ## Current Progress
 
 | Topic | Progress | Status |
 |---|---:|---|
 | Broken Access Control | 13 | Completed |
-| Authentication Vulnerabilities | 8 completed + 1 workflow-validated | In progress |
-| **Total** | **21 completed + 1 workflow-validated** | |
+| Authentication Vulnerabilities | 9 completed + 1 workflow-validated | In progress |
+| **Total** | **22 completed + 1 workflow-validated** | |
 
 ## Methodology
 
@@ -74,7 +74,7 @@ This section covers failures in authorization enforcement, including horizontal 
 
 # Authentication Vulnerabilities
 
-This section covers weaknesses in login mechanisms, username enumeration, brute-force protection, authentication side channels, and multi-factor authentication.
+This section covers weaknesses in login mechanisms, username enumeration, brute-force protection, authentication side channels, multi-factor authentication, and persistent-login mechanisms.
 
 | Lab | Main focus |
 |---|---|
@@ -87,8 +87,9 @@ This section covers weaknesses in login mechanisms, username enumeration, brute-
 | [2FA simple bypass](lab-writeups/Authentication_Vulnerabilities/2fa-simple-bypass.md) | Missing MFA-state enforcement on protected resources |
 | [2FA broken logic](lab-writeups/Authentication_Vulnerabilities/2fa-broken-logic.md) | Client-controlled MFA identity and brute-forceable second factor |
 | [2FA bypass using a brute-force attack](lab-writeups/Authentication_Vulnerabilities/2fa-bypass-using-a-brute-force-attack.md) | Per-session MFA attempt limit bypass using re-authentication and Burp macros |
+| [Brute-forcing a stay-logged-in cookie](lab-writeups/Authentication_Vulnerabilities/brute-forcing-a-stay-logged-in-cookie.md) | Predictable password-derived persistent authentication token |
 
-> **Execution note:** The final lab above has a fully reproduced session-reset bypass and validated automation workflow. The full `0000-9999` enumeration was not completed in the available test setup because the macro-driven request chain was too slow, so no successful MFA code is claimed.
+> **Execution note:** The 2FA brute-force lab above has a fully reproduced session-reset bypass and validated automation workflow. The full `0000-9999` enumeration was not completed in the available test setup because the macro-driven request chain was too slow, so no successful MFA code is claimed.
 
 ### Concepts practiced
 
@@ -108,6 +109,10 @@ This section covers weaknesses in login mechanisms, username enumeration, brute-
 - Session Handling Rules
 - CSRF token refresh
 - Workflow-level rate-limit bypass
+- Persistent authentication cookies
+- Base64 decoding and encoding
+- MD5-based token construction
+- Password-derived authentication tokens
 
 ---
 
@@ -132,6 +137,7 @@ Techniques demonstrated across the write-ups include:
 - Custom HTTP header testing
 - JSON structure and data-type manipulation
 - Session and authentication-state analysis
+- Hashing and encoding transformations for token analysis
 
 ---
 
@@ -144,7 +150,7 @@ web-security-portfolio/
     ├── Broken_Access_Control/
     │   └── 13 technical write-ups
     └── Authentication_Vulnerabilities/
-        └── 9 technical write-ups
+        └── 10 technical write-ups
 ```
 
 New vulnerability classes will be added as the training progresses.
