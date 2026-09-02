@@ -2,15 +2,15 @@
 
 Hands-on web application security portfolio documenting practical vulnerability testing in controlled training environments.
 
-The repository currently contains **24 completed technical write-ups**, plus **1 additional MFA brute-force workflow that was fully validated but not brute-forced to completion**, based primarily on PortSwigger Web Security Academy labs. Each write-up focuses not only on the exploit, but also on the reasoning behind the vulnerability, its root cause, impact, and remediation.
+The repository currently contains **25 completed technical write-ups**, plus **1 additional MFA brute-force workflow that was fully validated but not brute-forced to completion**, based primarily on PortSwigger Web Security Academy labs. Each write-up focuses not only on the exploit, but also on the reasoning behind the vulnerability, its root cause, impact, and remediation.
 
 ## Current Progress
 
 | Topic | Progress | Status |
 |---|---:|---|
 | Broken Access Control | 13 | Completed |
-| Authentication Vulnerabilities | 11 completed + 1 workflow-validated | In progress |
-| **Total** | **24 completed + 1 workflow-validated** | |
+| Authentication Vulnerabilities | 12 completed + 1 workflow-validated | In progress |
+| **Total** | **25 completed + 1 workflow-validated** | |
 
 ## Methodology
 
@@ -90,6 +90,7 @@ This section covers weaknesses in login mechanisms, username enumeration, brute-
 | [Brute-forcing a stay-logged-in cookie](lab-writeups/Authentication_Vulnerabilities/brute-forcing-a-stay-logged-in-cookie.md) | Predictable password-derived persistent authentication token |
 | [Offline password cracking](lab-writeups/Authentication_Vulnerabilities/offline-password-cracking.md) | Stored XSS, persistent-cookie theft, and offline cracking of exposed MD5 password hashes |
 | [Password reset broken logic](lab-writeups/Authentication_Vulnerabilities/password-reset-broken-logic.md) | Reset token not securely bound to the target account |
+| [Password reset poisoning via middleware](lab-writeups/Authentication_Vulnerabilities/password-reset-poisoning-via-middleware.md) | Attacker-controlled forwarding headers poisoning password-reset links |
 
 > **Execution note:** The 2FA brute-force lab above has a fully reproduced session-reset bypass and validated automation workflow. The full `0000-9999` enumeration was not completed in the available test setup because the macro-driven request chain was too slow, so no successful MFA code is claimed.
 
@@ -122,6 +123,9 @@ This section covers weaknesses in login mechanisms, username enumeration, brute-
 - Password-reset token binding
 - Client-controlled account recovery parameters
 - Password-recovery workflow authorization
+- Password-reset poisoning
+- `X-Forwarded-Host` manipulation
+- Trust boundaries around reverse-proxy metadata
 
 ---
 
@@ -151,6 +155,7 @@ Techniques demonstrated across the write-ups include:
 - Stored-XSS-driven cookie exfiltration in lab environments
 - Offline hash analysis and password recovery
 - Password-reset workflow manipulation
+- Host-header and forwarding-header manipulation
 
 ---
 
@@ -163,7 +168,7 @@ web-security-portfolio/
     ├── Broken_Access_Control/
     │   └── 13 technical write-ups
     └── Authentication_Vulnerabilities/
-        └── 12 technical write-ups
+        └── 13 technical write-ups
 ```
 
 New vulnerability classes will be added as the training progresses.
