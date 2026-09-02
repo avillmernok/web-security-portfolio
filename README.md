@@ -2,15 +2,15 @@
 
 Hands-on web application security portfolio documenting practical vulnerability testing in controlled training environments.
 
-The repository currently contains **25 completed technical write-ups**, plus **1 additional MFA brute-force workflow that was fully validated but not brute-forced to completion**, based primarily on PortSwigger Web Security Academy labs. Each write-up focuses not only on the exploit, but also on the reasoning behind the vulnerability, its root cause, impact, and remediation.
+The repository currently contains **26 completed technical write-ups**, plus **1 additional MFA brute-force workflow that was fully validated but not brute-forced to completion**, based primarily on PortSwigger Web Security Academy labs. Each write-up focuses not only on the exploit, but also on the reasoning behind the vulnerability, its root cause, impact, and remediation.
 
 ## Current Progress
 
 | Topic | Progress | Status |
 |---|---:|---|
 | Broken Access Control | 13 | Completed |
-| Authentication Vulnerabilities | 12 completed + 1 workflow-validated | In progress |
-| **Total** | **25 completed + 1 workflow-validated** | |
+| Authentication Vulnerabilities | 13 completed + 1 workflow-validated | Coverage complete |
+| **Total** | **26 completed + 1 workflow-validated** | |
 
 ## Methodology
 
@@ -74,7 +74,7 @@ This section covers failures in authorization enforcement, including horizontal 
 
 # Authentication Vulnerabilities
 
-This section covers weaknesses in login mechanisms, username enumeration, brute-force protection, authentication side channels, multi-factor authentication, persistent-login mechanisms, password recovery, and password-reset workflows.
+This section covers weaknesses in login mechanisms, username enumeration, brute-force protection, authentication side channels, multi-factor authentication, persistent-login mechanisms, password recovery, password-reset workflows, and password-change functionality.
 
 | Lab | Main focus |
 |---|---|
@@ -91,8 +91,9 @@ This section covers weaknesses in login mechanisms, username enumeration, brute-
 | [Offline password cracking](lab-writeups/Authentication_Vulnerabilities/offline-password-cracking.md) | Stored XSS, persistent-cookie theft, and offline cracking of exposed MD5 password hashes |
 | [Password reset broken logic](lab-writeups/Authentication_Vulnerabilities/password-reset-broken-logic.md) | Reset token not securely bound to the target account |
 | [Password reset poisoning via middleware](lab-writeups/Authentication_Vulnerabilities/password-reset-poisoning-via-middleware.md) | Attacker-controlled forwarding headers poisoning password-reset links |
+| [Password brute-force via password change](lab-writeups/Authentication_Vulnerabilities/password-brute-force-via-password-change.md) | Password-change error messages used as a current-password oracle |
 
-> **Execution note:** The 2FA brute-force lab above has a fully reproduced session-reset bypass and validated automation workflow. The full `0000-9999` enumeration was not completed in the available test setup because the macro-driven request chain was too slow, so no successful MFA code is claimed.
+> **Execution note:** All 14 Authentication Vulnerabilities labs are documented. Thirteen were completed end-to-end. The 2FA brute-force lab has a fully reproduced session-reset bypass and validated automation workflow, but the full `0000-9999` enumeration was not completed in the available test setup because the macro-driven request chain was too slow, so no successful MFA code is claimed.
 
 ### Concepts practiced
 
@@ -126,6 +127,9 @@ This section covers weaknesses in login mechanisms, username enumeration, brute-
 - Password-reset poisoning
 - `X-Forwarded-Host` manipulation
 - Trust boundaries around reverse-proxy metadata
+- Current-password verification oracles
+- Password-change workflow brute forcing
+- Inconsistent brute-force protection across authentication-sensitive endpoints
 
 ---
 
@@ -156,6 +160,8 @@ Techniques demonstrated across the write-ups include:
 - Offline hash analysis and password recovery
 - Password-reset workflow manipulation
 - Host-header and forwarding-header manipulation
+- Error-message analysis as a credential oracle
+- Password-change workflow testing
 
 ---
 
@@ -168,7 +174,7 @@ web-security-portfolio/
     ├── Broken_Access_Control/
     │   └── 13 technical write-ups
     └── Authentication_Vulnerabilities/
-        └── 13 technical write-ups
+        └── 14 technical write-ups
 ```
 
 New vulnerability classes will be added as the training progresses.
